@@ -9,20 +9,21 @@ namespace Assembly_CSharp
 {
     internal interface IShipInput
     {
-        public Vector3 MouseInput
+        public float ToMouseMagnitude
         {
-            get; set;
+            get;
         }
 
         public bool MouseDown
         {
-            get; set;
+            get;
         }
 
         public float InputAngle
         {
-            get; set;
+            get;
         }
+
 
     }
 }
