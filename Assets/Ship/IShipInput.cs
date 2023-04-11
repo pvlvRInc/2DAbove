@@ -5,16 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assembly_CSharp
+namespace pradev
 {
-    internal interface IShipInput
+    public interface IShipInput
     {
         public float ToMouseMagnitude
         {
             get;
         }
 
-        public bool MouseDown
+        public bool Moving
         {
             get;
         }
@@ -24,6 +24,7 @@ namespace Assembly_CSharp
             get;
         }
 
+        public void ReadInput();
 
     }
 }

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assembly_CSharp
+namespace pradev
 {
-    internal class PlayerInput : IShipInput
+    public class PlayerInput : IShipInput
     {
         Camera _camera;
         Transform _transform;
@@ -19,7 +19,7 @@ namespace Assembly_CSharp
         float _inputAngle;
         bool _mouseDown;
 
-        PlayerInput(Camera camera, Transform transform)
+        public PlayerInput(Camera camera, Transform transform)
         {
             _camera = camera;
             _transform = transform;
@@ -31,11 +31,13 @@ namespace Assembly_CSharp
 
         public float InputAngle => _inputAngle;
 
-        public bool MouseDown => _mouseDown;
+        public bool Moving => _mouseDown;
 
         public void ReadInput()
         {
             Vector3 mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = _transform.position.z;
+
             _dirToMouse = (mousePos - _transform.position);
             _ToMouseMagnitude = _dirToMouse.magnitude;
             _inputAngle = Mathf.Atan2(_dirToMouse.normalized.x, _dirToMouse.normalized.y) * Mathf.Rad2Deg;
