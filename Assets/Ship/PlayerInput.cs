@@ -18,6 +18,7 @@ namespace pradev
         float _ToMouseMagnitude;
         float _inputAngle;
         bool _mouseDown;
+        bool _rigthMouseDown;
 
         public PlayerInput(Camera camera, Transform transform)
         {
@@ -32,6 +33,7 @@ namespace pradev
         public float InputAngle => _inputAngle;
 
         public bool Moving => _mouseDown;
+        public bool Fire => _rigthMouseDown;
 
         public void ReadInput()
         {
@@ -43,6 +45,7 @@ namespace pradev
             _inputAngle = Mathf.Atan2(_dirToMouse.normalized.x, _dirToMouse.normalized.y) * Mathf.Rad2Deg;
 
             _mouseDown = Input.GetMouseButton(0);
+            _rigthMouseDown = Input.GetMouseButton(1);
         }
 
     }

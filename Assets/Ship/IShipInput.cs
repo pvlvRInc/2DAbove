@@ -19,6 +19,11 @@ namespace pradev
             get;
         }
 
+        public bool Fire
+        {
+            get;
+        }
+
         public float InputAngle
         {
             get;

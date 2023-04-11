@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+
+namespace pradev
+{
+    internal class BulletWeapon : IWeapon
+    {
+
+        private float _timeShoot;
+        private WeaponParameters _weaponParameters;
+        private IShipInput _input;
+        private Transform _ship;
+
+        public BulletWeapon(WeaponParameters parameters, IShipInput input, Transform startPoint) {
+            _weaponParameters = parameters;
+            _input = input;
+            _ship = startPoint;
+
+            _timeShoot = Time.time + 1 / _weaponParameters.fireRate;
+        }
+
+        public void Shoot()
+        {
+            if (_input.Fire && _timeShoot < Time.time)
+            {
+                _timeShoot = Time.time + 1 / _weaponParameters.fireRate;
+
+                for (int i = 0; i < _weaponParameters.projectileCount; i++)
+                {
+                    GameObject bullet = GameObject.Instantiate(_weaponParameters.bulletShape);
+                    bullet.AddComponent<Bullet>().Initialize(_weaponParameters, _ship);
+                }
+            }
+        }
+    }
+}
