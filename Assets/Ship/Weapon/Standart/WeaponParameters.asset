@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDamage: 13
   maxDamage: 16
-  fireRate: 5
+  fireRate: 80
   projectileCount: 1
-  angle: 12
+  angle: 5
   isRotating: 0
   rotateSpeed: 0
   projectileSpeed: 0.1

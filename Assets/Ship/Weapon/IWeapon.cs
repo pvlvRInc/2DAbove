@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace pradev
 {
-    internal interface IWeapon
+    public interface IWeapon
     {
         public void Shoot();
     }

@@ -17,9 +17,9 @@ namespace pradev
         private float _damage;
         private Transform _bullet;
         private Collider _collider;
-        private float timeCreated;
-        private float timeDestroy;
-        float additionalVelocity;
+        private float _timeCreated;
+        private float _timeDestroy;
+        float _additionalVelocity;
 
         public void Initialize(WeaponParameters parameters, Transform ship, Rigidbody2D rigidbody)
         {
@@ -34,8 +34,8 @@ namespace pradev
         {
             _bullet = transform;
             _damage = UnityEngine.Random.Range(_weaponParameters.minDamage, _weaponParameters.maxDamage);
-            timeCreated = Time.time;
-            timeDestroy = timeCreated + _weaponParameters.lifetime;
+            _timeCreated = Time.time;
+            _timeDestroy = _timeCreated + _weaponParameters.lifetime;
 
             _bullet.position = _startPoint.position;
             _bullet.rotation = _startPoint.rotation;
@@ -43,7 +43,7 @@ namespace pradev
             _bullet.Rotate( transform.forward * UnityEngine.Random.Range(-halfAngle, halfAngle));
 
 
-            additionalVelocity = Mathf.Min((_rigidbody.velocity / 20 * transform.up).magnitude,.3f);
+            _additionalVelocity = Mathf.Min((_rigidbody.velocity / 20 * transform.up).magnitude,.3f);
         }
 
         public void Update()
@@ -61,13 +61,13 @@ namespace pradev
 
         private void Move()
         {
-            _bullet.localPosition += _bullet.up * (_weaponParameters.projectileSpeed + additionalVelocity);
-            Debug.Log(additionalVelocity);
+            _bullet.localPosition += _bullet.up * (_weaponParameters.projectileSpeed + _additionalVelocity);
+            //Debug.Log(additionalVelocity);
         }
 
         private void CheckDestroy()
         {
-            if (Time.time > timeDestroy)
+            if (Time.time > _timeDestroy)
             {
                 GameObject.DestroyImmediate(gameObject);
             }
