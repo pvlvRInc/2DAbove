@@ -12,15 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affb79883a8aeaf478a06033a760e86c, type: 3}
   m_Name: SimpleEnemyParameters
   m_EditorClassIdentifier: 
+  useMouse: 1
+  useAI: 1
+  forceMultiplier: 30
+  rotationMultiplier: 1
   cost: 1
-  speed: 0.3
   aggressivness: 0
-  behaviour:
-    rid: 4419335533281411072
+  input:
+    rid: 4419335533281411073
   WeaponParameters: {fileID: 11400000, guid: dd39e63e01ddc3041ad52f5260c8fedb, type: 2}
   shape: {fileID: 8377199552317376960, guid: 538737eced3c20148bf45d33dfb9244a, type: 3}
   references:
     version: 2
     RefIds:
-    - rid: 4419335533281411072
+    - rid: 4419335533281411073
       type: {class: SimpleEnemyBehaviour, ns: , asm: Assembly-CSharp}
