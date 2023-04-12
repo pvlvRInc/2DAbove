@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDamage: 13
   maxDamage: 16
-  fireRate: 7
+  fireRate: 5
   projectileCount: 1
-  angle: 10
+  angle: 12
   isRotating: 0
   rotateSpeed: 0
   projectileSpeed: 0.1
-  lifetime: 10
+  lifetime: 4
   bulletShape: {fileID: 2992095534925222377, guid: 49d31dd4bc01e8244b65f6255946d247, type: 3}

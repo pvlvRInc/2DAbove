@@ -11,6 +11,7 @@ namespace pradev
     {
         private Transform _startPoint;
         private WeaponParameters _weaponParameters;
+        private Rigidbody2D _rigidbody;
 
         //Cashing
         private float _damage;
@@ -18,11 +19,13 @@ namespace pradev
         private Collider _collider;
         private float timeCreated;
         private float timeDestroy;
+        float additionalVelocity;
 
-        public void Initialize(WeaponParameters parameters, Transform ship)
+        public void Initialize(WeaponParameters parameters, Transform ship, Rigidbody2D rigidbody)
         {
             _startPoint = ship;
             _weaponParameters = parameters;
+            _rigidbody = rigidbody;
 
             Create();
         }
@@ -38,6 +41,9 @@ namespace pradev
             _bullet.rotation = _startPoint.rotation;
             float halfAngle = _weaponParameters.angle / 2;
             _bullet.Rotate( transform.forward * UnityEngine.Random.Range(-halfAngle, halfAngle));
+
+
+            additionalVelocity = Mathf.Min((_rigidbody.velocity / 20 * transform.up).magnitude,.3f);
         }
 
         public void Update()
@@ -55,7 +61,8 @@ namespace pradev
 
         private void Move()
         {
-            _bullet.localPosition += _bullet.up * _weaponParameters.projectileSpeed;
+            _bullet.localPosition += _bullet.up * (_weaponParameters.projectileSpeed + additionalVelocity);
+            Debug.Log(additionalVelocity);
         }
 
         private void CheckDestroy()

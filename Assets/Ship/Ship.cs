@@ -18,7 +18,7 @@ public class Ship : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _input = new PlayerInput(Camera.main, transform);
         _motor = new ShipMotor(_shipParameters, _input, transform, _rigidbody);
-        _weapon = new BulletWeapon(_weaponParameters, _input, transform);
+        _weapon = new BulletWeapon(_weaponParameters, _input, transform, _rigidbody);
     }
 
     public void Update()
