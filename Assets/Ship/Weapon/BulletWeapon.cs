@@ -14,16 +14,18 @@ namespace pradev
         private IShipInput _input;
         private Transform _ship;
         private Rigidbody2D _rigidbody;
+        private bool _isOwnedByPlayer;
 
         //Cashing
         private float _timeShoot;
 
-        public BulletWeapon(WeaponParameters parameters, IShipInput input, Transform startPoint, Rigidbody2D rigidbody)
+        public BulletWeapon(WeaponParameters parameters, IShipInput input, Transform startPoint, Rigidbody2D rigidbody, bool isOwnedByPlayer)
         {
             _weaponParameters = parameters;
             _input = input;
             _ship = startPoint;
             _rigidbody = rigidbody;
+            _isOwnedByPlayer = isOwnedByPlayer;
 
             _timeShoot = Time.time + 1 / _weaponParameters.fireRate;
         }
@@ -37,7 +39,7 @@ namespace pradev
                 for (int i = 0; i < _weaponParameters.projectileCount; i++)
                 {
                     GameObject bullet = GameObject.Instantiate(_weaponParameters.bulletShape);
-                    bullet.AddComponent<Bullet>().Initialize(_weaponParameters, _ship, _rigidbody);
+                    bullet.AddComponent<Bullet>().Initialize(_weaponParameters, _ship, _rigidbody, _isOwnedByPlayer);
                 }
             }
         }

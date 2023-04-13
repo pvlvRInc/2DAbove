@@ -13,6 +13,7 @@ namespace pradev
         public bool useMouse;
         public bool useAI;
 
+        public float hp = 100f;
         public float forceMultiplier;
         public float rotationMultiplier;
     }

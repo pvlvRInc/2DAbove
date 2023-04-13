@@ -31,7 +31,7 @@ public class EnemyConstruct : MonoBehaviour
 
     public void Update()
     {
-        //points logic should be outside
+        //todo points logic should be outside
         _pointIncrement = (Time.time - _startTime) / 10 * _pointScale;
         _points += _pointIncrement;
 

@@ -10,15 +10,12 @@ namespace pradev
     public class EnemyParameters : ShipParameters
     {
         public float cost;
-        //public float speed;
         public float aggressivness;
 
         [SerializeReference, SubclassSelector]
         public IShipInput input;
 
         public WeaponParameters WeaponParameters;
-
-        //public EnemyBehaviour enemyBehaviour => behaviour as EnemyBehaviour;
 
         public GameObject shape;
     }

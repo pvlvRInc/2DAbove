@@ -17,6 +17,7 @@ MonoBehaviour:
   forceMultiplier: 30
   rotationMultiplier: 1
   cost: 1
+  hp: 10
   aggressivness: 0
   input:
     rid: 4419335533281411073
