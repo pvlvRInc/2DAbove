@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useMouse: 1
   useAI: 1
-  forceMultiplier: 30
+  hp: 99.7
+  forceMultiplier: 15
   rotationMultiplier: 1
   cost: 1
-  hp: 10
   aggressivness: 0
   input:
-    rid: 4419335533281411073
+    rid: 4419335555600875521
   WeaponParameters: {fileID: 11400000, guid: dd39e63e01ddc3041ad52f5260c8fedb, type: 2}
   shape: {fileID: 8377199552317376960, guid: 538737eced3c20148bf45d33dfb9244a, type: 3}
   references:
     version: 2
     RefIds:
-    - rid: 4419335533281411073
+    - rid: 4419335555600875521
       type: {class: SimpleEnemyBehaviour, ns: , asm: Assembly-CSharp}

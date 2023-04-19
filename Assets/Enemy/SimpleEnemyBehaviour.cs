@@ -41,7 +41,5 @@ public class SimpleEnemyBehaviour : IShipInput
 
         _isMoving = true;
         _isShooting = false;
-
-        //_rigthMouseDown = Input.GetMouseButton(1);
     }
 }

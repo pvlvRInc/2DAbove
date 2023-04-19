@@ -23,6 +23,10 @@ namespace pradev
         private float _timeDestroy;
         float _additionalVelocity;
 
+        public float Damage => _damage;
+        public bool IsOwnedByPlayer => _isOwnedByPlayer;
+        public Vector2 Velocity => _weaponParameters.projectileSpeed * transform.up;
+
         public void Initialize(WeaponParameters parameters, Transform ship, Rigidbody2D rigidbody, bool isOwnedByPlayer)
         {
             _startPoint = ship;
@@ -37,6 +41,7 @@ namespace pradev
         {
             GetComponent<Collider2D>().isTrigger = true;
             GetComponent<Rigidbody2D>().gravityScale = 0;
+            gameObject.layer = LayerMask.NameToLayer("Bullets");
 
             _bullet = transform;
             _damage = UnityEngine.Random.Range(_weaponParameters.minDamage, _weaponParameters.maxDamage);
@@ -55,32 +60,27 @@ namespace pradev
         public void Update()
         {
             Move();
-            //DealDamage();
-            CheckDestroy();
+            CheckLifetimeExpire();
 
         }
 
         private void Move()
         {
             _bullet.localPosition += _bullet.up * (_weaponParameters.projectileSpeed + _additionalVelocity * Time.deltaTime);
-            //Debug.Log(additionalVelocity);
         }
 
-        private void CheckDestroy()
+        private void CheckLifetimeExpire()
         {
             if (Time.time > _timeDestroy)
             {
-                GameObject.DestroyImmediate(gameObject);
+                GameObject.Destroy(gameObject);
             }
         }
-        public void OnTriggerEnter2D(Collider2D other)
+
+        public void HitDestroy()
         {
-            Debug.Log(other.gameObject.name);
-            if (_isOwnedByPlayer && other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-            {
-                Enemy target = other.GetComponent<Enemy>();
-                target.GetDamage(_damage);
-            }
+            GameObject.Destroy(gameObject);
         }
+
     }
 }
