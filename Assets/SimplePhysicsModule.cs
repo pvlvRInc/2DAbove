@@ -46,13 +46,13 @@ namespace pradev
         {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Bullets"))
             {
-                Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+                Bullet bullet = collision.gameObject.GetComponent<Bullet>(); // Todo make general projectile-aoe
                 if (bullet.IsOwnedByPlayer) //todo determine for player too
                 {
                     _OnDamageTaken?.Invoke(new CollideParameters(bullet.Damage, bullet.Velocity));
                     //GetDamage(bullet.Damage);
                     //GetKnockback(bullet);
-                    bullet.HitDestroy();
+                    bullet.HitDestroy(); // todo remove zalupa
                 }
             }
         }

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace pradev
 {
-    public class CollideParameters
+    public struct CollideParameters
     {
         private float _damage;
         private Vector2 _knockback;
