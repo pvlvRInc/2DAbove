@@ -12,6 +12,7 @@ namespace pradev
         public float cost;
         public float aggressivness;
 
+        // package from https://github.com/mackysoft/Unity-SerializeReferenceExtensions
         [SerializeReference, SubclassSelector]
         public IShipInput input;
 
